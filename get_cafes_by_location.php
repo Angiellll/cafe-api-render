@@ -16,13 +16,15 @@ include 'db.php';
 $location = isset($_GET['location']) ? $conn->real_escape_string($_GET['location']) : '';
 
 if ($location === '') {
-    // 如果沒帶 location，回傳空陣列或全部資料
     echo json_encode([]);
     exit;
 }
 
-// 用 LIKE 模糊搜尋 city 欄位（你可以改欄位名稱）
-$sql = "SELECT * FROM cafe WHERE city LIKE '%$location%'";
+// 用 LIKE 模糊搜尋,這樣輸入「台北市」或「台北市中山區」都能找到符合的資料,（你可以改欄位名稱）
+//把查詢結果放入陣列，並把特定欄位轉型（int 或 float）
+// 用 city 跟 address 都模糊搜尋，增加命中率
+$sql = "SELECT * FROM cafe WHERE city LIKE '%$location%' OR address LIKE '%$location%'";
+
 $result = $conn->query($sql);
 
 $data = array();
@@ -39,6 +41,6 @@ if ($result && $result->num_rows > 0) {
         $data[] = $row;
     }
 }
-
+//回傳 JSON 編碼的資料
 echo json_encode($data, JSON_UNESCAPED_UNICODE);
 ?>
