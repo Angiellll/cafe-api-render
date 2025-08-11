@@ -1,11 +1,14 @@
-# 使用官方 PHP 內建的 Apache 映像檔，方便跑 PHP 網頁
+# 使用官方 PHP 8.1 搭配 Apache 的映像檔
 FROM php:8.1-apache
 
-# 將你的 PHP 程式碼複製到 Apache 的網站根目錄
+# 安裝 mysqli 擴充套件（php-mysqli）
+RUN docker-php-ext-install mysqli
+
+# 複製你的所有 PHP 程式碼到 Apache 網站根目錄
 COPY . /var/www/html/
 
-# 開放 80 端口（HTTP 預設端口）
+# 開放 80 端口（HTTP 預設）
 EXPOSE 80
 
-# 啟動 Apache，這是預設 CMD，不用特別寫也可以
+# 啟動 Apache，這是官方預設指令，不用改
 CMD ["apache2-foreground"]
