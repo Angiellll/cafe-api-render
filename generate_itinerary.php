@@ -1,9 +1,7 @@
-#這個檔案就是你 Android callAIItineraryPlanner() 要呼叫的 API
-#先做假資料版本，等你要串 ChatGPT 再改
-
 <?php
 header("Content-Type: application/json; charset=UTF-8");
-
+//這個檔案就是你 Android callAIItineraryPlanner() 要呼叫的 API
+//先做假資料版本，等你要串 ChatGPT 再改
 // 讀取前端傳來的資料
 $location = $_GET['location'] ?? '';
 $cafes = $_GET['cafes'] ?? '';
