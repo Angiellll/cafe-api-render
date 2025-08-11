@@ -1,13 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Aug  8 23:20:01 2025
-
-@author: angie
-"""
-
-# 假設用欄位 city 來篩選（如果你用別的欄位就改成該欄位名稱
-
 <?php
 header("Content-Type: application/json; charset=UTF-8");
 include 'db.php';
