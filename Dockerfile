@@ -1,7 +1,3 @@
-<?php
-echo "Hello from Render!";
-?>
-
 # 使用官方 PHP 內建的 Apache 映像檔，方便跑 PHP 網頁
 FROM php:8.1-apache
 
